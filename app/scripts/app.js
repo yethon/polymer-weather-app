@@ -13,7 +13,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   var app = document.querySelector('#app');
 
   app.addEventListener('dom-change', function() {
-    console.log('Our app is ready to rock!');
+    console.log('My app is ready to rock!');
   });
 
 

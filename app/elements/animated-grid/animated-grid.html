@@ -180,7 +180,7 @@
       return 'tile ' + color + '-300';
     },
 
-    _onClick: function() {
+    _onClick: function(event) {
       var target = event.target;
       while (target !== this && !target._templateInstance) {
         target = target.parentNode;
