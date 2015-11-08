@@ -1,0 +1,141 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="weather-element">
+
+  <link rel="import" type="css" href="../../styles/weather-icons.css">
+
+  <style>
+    h5 {
+      margin: 0.7rem;
+      font-size: 1.5rem;
+    }
+
+    .summary {
+      font-weight: 600;
+    }
+
+    .wi {
+      font-size: 4rem;
+      margin: 2rem 0 1rem;
+      text-align: center;
+    }
+
+    .title {
+      margin-bottom: 1rem;
+    }
+
+    .weather-data {
+      margin-top: 3rem;
+      white-space: nowrap;
+    }
+
+    #arrow {
+      width: 1.7rem;
+      height: 1.7rem;
+    }
+  </style>
+
+  <template>
+
+    <firebase-document location="[[_computeFirebaseUrl(city)]]" data="{{weather}}"></firebase-document>
+    <h1 class="title">[[text]]</h1>
+    <i class$="[[_computeIcon(weather.icon, iconMap)]]"></i>
+    <div class="summary">[[weather.summary]]</div>
+
+    <div class="weather-data">
+      <h5>[[_formatTemperature(weather.apparentTemperature)]]</h5>
+      <h5>[[_formatHumidity(weather.humidity)]]</h5>
+      <div class="wind-data">
+        <h5>
+          [[_formatWindSpeedAndBearing(weather.windSpeed, weather.windBearing)]]
+          <iron-icon id="arrow" icon="svg-icons:wind-arrow"></iron-icon>
+        </h5>
+        <h5>[[_formatPrecipitationProbability(weather.precipProbability)]]</h5>
+      </div>
+
+  </template>
+
+</dom-module>
+
+<script>
+  Polymer({
+
+    is: 'weather-element',
+
+    properties: {
+      iconMap: {
+        type: Object,
+        value: function() {
+          return {
+            'clear-day': 'wi-forecast-io-clear-day',
+            'clear-night': 'wi-forecast-io-clear-night',
+            'rain': 'wi-forecast-io-rain',
+            'snow': 'wi-forecast-io-snow',
+            'sleet': 'wi-forecast-io-sleet',
+            'wind': 'wi-forecast-io-wind',
+            'fog': 'wi-forecast-io-fog',
+            'cloudy': 'wi-forecast-io-cloudy',
+            'partly-cloudy-day': 'wi-forecast-io-partly-cloudy-day',
+            'partly-cloudy-night': 'wi-forecast-io-partly-cloudy-night',
+            'hail': 'wi-forecast-io-hail',
+            'thunderstorm': 'wi-forecast-io-thunderstorm',
+            'tornado': 'wi-forecast-io-tornado'
+          };
+        }
+      }
+    },
+
+    // _computeFirebaseUrl: function(city='boston') {
+    _computeFirebaseUrl: function(city) {
+      city = city || 'boston';
+
+      return 'https://publicdata-weather.firebaseio.com/' + city + '/currently';
+    },
+
+    _computeIcon: function(icon, iconMap) {
+      if (typeof iconMap[icon] === 'undefined') {
+        return;
+      }
+
+      return 'wi ' + iconMap[icon];
+    },
+
+    _formatTemperature: function(farenheit) {
+      var celsius = this._computeCelsius(farenheit) + ' °C';
+      farenheit = Math.round(farenheit) + ' F';
+
+      return celsius + '  /  ' + farenheit;
+    },
+
+    _formatHumidity: function(relativeHumidity) {
+      if (!relativeHumidity) { return; }
+
+      var humidity = relativeHumidity * 100;
+
+      return Math.floor(humidity) + '% humidity';
+    },
+
+    _formatWindSpeedAndBearing: function(windSpeed, windBearing) {
+      if (!windSpeed) { return; }
+
+      var degrees = 135 + windBearing; // arrow icon is at 45 degrees and pointing in the opposite direction
+      var rotation = 'rotate(' + degrees + 'deg)';
+
+      // rotate that arrow
+      this.transform(rotation, this.$.arrow);
+
+      // var kilometers = windSpeed * 1.61;
+      return /* Math.round(kilometers) + ' km/h   /   ' + */ Math.round(windSpeed) + ' mph  ';
+    },
+
+    _computeCelsius: function(farenheit) {
+      return Math.round((farenheit - 32) / 1.8);
+    },
+
+    _formatPrecipitationProbability: function(probability) {
+      if (Math.round(probability * 100) > 0) {
+        return Math.round(probability * 100) + '% precipitation';
+      }
+    }
+  });
+</script>

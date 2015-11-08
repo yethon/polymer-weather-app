@@ -1,0 +1,101 @@
+/*
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+body {
+  background: #2F344F;
+  font-family: 'Poiret One', 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+a:link {
+  color: #D7F4F1;
+}
+a:visited {
+  color: #D7F4F1;
+}
+a:hover {
+  color: #80CBC4;
+}
+
+.denim-1-100 {
+  background: #9AA0B2;
+}
+
+.denim-1-300 {
+  background: #898DA2;
+  color: #FFD18F;
+
+}
+
+.denim-2-100 {
+  background: #9EA0AF;
+}
+
+.denim-2-300 {
+  background: #636885;
+  color: #D7F4F1;
+}
+
+.denim-3-100 {
+  background: #7A7E95;
+}
+
+.denim-3-300 {
+  background: #484E6E;
+  color: #C2BACD;
+}
+
+.denim-4-100 {
+  background: #5A5F7E;
+}
+
+.denim-4-300 {
+  background: #2F344F;
+  color: #FFC5C2;
+}
+
+
+.turquoise-100 {
+  background: #D7F4F1;
+}
+
+.turquoise-300 {
+  background: #80cbc4;
+}
+
+.coral-100 {
+  background: #FFC5C2;
+}
+
+.coral-300 {
+  background: #FF847C;
+}
+
+.purple-100 {
+  background: #C2BACD;
+}
+
+.purple-300 {
+  background: #766192;
+}
+
+.green-100 {
+  background: #D7F4F1;
+}
+
+.green-300 {
+  background: #80CBC4;
+}
+
+.gold-300 {
+  background: #FFB74D;
+}
+
+.gold-100 {
+  background: #FFD18F;
+}

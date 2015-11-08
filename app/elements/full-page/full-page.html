@@ -1,0 +1,72 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="full-page">
+
+  <style>
+
+  neon-animated-pages {
+    height: 100%;
+  }
+
+  animated-grid {
+    height: 100%;
+    @apply(--layout-flex);
+  }
+
+  </style>
+
+  <template>
+
+    <neon-animated-pages id="pages" selected="0">
+
+      <animated-grid id="grid" on-tile-click="_onTileClick"></animated-grid>
+
+      <fullsize-page-with-card id="fullsize-card" hero-id="hero" on-click="_onFullsizeClick">
+      </fullsize-page-with-card>
+
+    </neon-animated-pages>
+
+  </template>
+
+</dom-module>
+
+<script>
+  Polymer({
+    is: 'full-page',
+    behaviors: [
+      Polymer.NeonAnimatableBehavior,
+      Polymer.NeonAnimationRunnerBehavior
+    ],
+    properties: {
+      animationConfig: {
+        type: Object,
+        value: function() {
+          return {
+            'entry': [{
+              animatable: this.$.grid,
+              type: 'entry'
+            }]
+          };
+        }
+      }
+    },
+
+    show: function() {
+      this.style.visibility = 'visible';
+      this.playAnimation('entry');
+    },
+
+    _onTileClick: function(event) {
+      console.warn('event ::: ', event);
+      this.$['fullsize-card'].data = event.detail.data;
+      this.$.pages.selected = 1;
+    },
+
+    _onFullsizeClick: function() {
+      console.warn('hello');
+      this.$.pages.selected = 0;
+    }
+
+
+  });
+</script>
