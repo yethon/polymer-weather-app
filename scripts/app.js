@@ -1,0 +1,1 @@
+!function(e){"use strict";var o=e.querySelector("#app");o.addEventListener("dom-change",function(){console.log("My app is ready to rock!")}),window.addEventListener("WebComponentsReady",function(){e.querySelector("full-page").show()}),o.scrollPageToTop=function(){}}(document);

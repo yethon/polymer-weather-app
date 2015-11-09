@@ -1,0 +1,9 @@
+{
+  "name": "Polymer Weather Application",
+  "short_name": "Weather",
+  "icons": [],
+  "start_url": "/?homescreen=1",
+  "background_color": "#3E4EB8",
+  "display": "standalone",
+  "theme_color": "#2E3AA1"
+}
