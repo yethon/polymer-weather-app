@@ -1,5 +1,4 @@
-
-## Polymer Weather Application
+# <a href="http://polymer-weather.site" target="_blank">Polymer Weather App</a>
 
 An experimental app built with [Polymer](http://polymer-project.org) and [Firebase open data sets](https://www.firebase.com/docs/open-data/weather.html).
 
