@@ -5,7 +5,6 @@ An experimental app built with [Polymer](http://polymer-project.org) and [Fireba
 
 Based off of the [Polymer Starter Kit](https://github.com/polymerelements/polymer-starter-kit/releases/latest).
 
-
 ### Run the app...
 
 **Start with these instructions (taken from the Polymer Starter Kit project)**
@@ -26,8 +25,6 @@ The version should be at or above 0.12.x.
 npm install -g gulp bower
 ```
 
-Install [Node](https://nodejs.org/)
-
 Clone this repo, and
 
 With Node.js installed, run the following one liner:
@@ -45,6 +42,18 @@ gulp serve
 ```
 
 This outputs an IP address you can use to locally test and another that can be used on devices connected to your network.
+
+#### Serve build
+
+If you decide to create a Polymer app, you should periodically serve the
+built code.  You might find that even though your app can be served
+without any errors while you develop (using gulp serve), the built code
+throws errors.  Since the errors are being thrown by minified\uglified
+files, you will never know what's wrong :o) but the 'vulcanization' step is probably to blame.
+
+```sh
+gulp serve:dist
+```
 
 #### Build & Vulcanize
 

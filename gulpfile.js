@@ -174,8 +174,10 @@ gulp.task('vulcanize', function () {
     .pipe($.vulcanize({
       stripComments: true,
       inlineCss: true,
-      inlineScripts: true
+      inlineScripts: true,
+      excludes: ['bower_components/firebase/'],  // firebase element is problematic
     }))
+    .pipe($.minifyInline())
     .pipe(gulp.dest('dist/elements'))
     .pipe($.size({title: 'vulcanize'}));
 });
