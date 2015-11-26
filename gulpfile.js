@@ -57,6 +57,7 @@ var jshintTask = function (src) {
     .pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
 };
 
+// Skeptical. Does this actually do anything?
 var imageOptimizeTask = function (src, dest) {
   return gulp.src(src)
     .pipe($.cache($.imagemin({
