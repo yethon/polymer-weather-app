@@ -89,7 +89,7 @@
     _computeFirebaseUrl: function(city) {
       city = city || 'boston';
 
-      return 'https://publicdata-weather.firebaseio.com/' + city + '/currently';
+      return 'wss://publicdata-weather.firebaseio.com/' + city + '/currently';
     },
 
     _computeIcon: function(icon, iconMap) {
